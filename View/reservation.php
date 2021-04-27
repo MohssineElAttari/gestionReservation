@@ -173,13 +173,37 @@
                 </div>
             </div>
         </section>
-        <section>
-            <div class="enfant_container">
+        <section class="enfant_container" hidden>
+            <div>
                 <h3 class="title">
                     les enfants
                 </h3>
-                <label for="nombre">nombre des enfants</label>
-                <input type="text" name="nombre" id="nombre" placeholder="entre le nombre des enfants">
+                <div class="number_input">
+                    <label for="nombre">nombre des enfants</label>
+                    <input type="text" name="nombre" id="nombre" placeholder="entre le nombre des enfants">
+                </div>
+                <div class="number_enfant">
+
+                </div>
+
+            </div>
+        </section>
+
+        </section>
+        <section class="pension_container" hidden>
+            <div>
+                <h3 class="title">
+                    les Pensions
+                </h3>
+                <div class="pension_select">
+                    <select name="" id="">
+                        <option value="complet">complet</option>
+                        <option value="complet">sans</option>
+                        <option value="complet">petit dej/dej</option>
+                        <option value="complet">petit dej/diner</option>
+
+                    </select>
+                </div>
             </div>
         </section>
     </div>

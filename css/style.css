@@ -4,7 +4,8 @@
     box-sizing: border-box;
 }
 
-.container_res {}
+
+/* .container_res {} */
 
 .bien_parent {
     display: flex;
