@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    <h1>Reservation</h1>
+    <h1><a href="View/reservation.php">Reservation</a></h1>
 </body>
 
 </html>
