@@ -1,6 +1,3 @@
-<?php
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reservation</title>
     <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/script.js" defer></script>
 </head>
 
 <body>
@@ -34,7 +32,7 @@
                         <h3>
                             1000$
                         </h3>
-                        <input type="checkbox" name="valid" id="">
+                        <input type="checkbox" name="valid" id="" class="check_input">
                     </div>
                 </div>
                 <div class="bien_child">
@@ -53,7 +51,7 @@
                         <h3>
                             1000$
                         </h3>
-                        <input type="checkbox" name="valid" id="">
+                        <input type="checkbox" name="valid" id="" class="check_input">
                     </div>
                 </div>
                 <div class="bien_child">
@@ -72,7 +70,7 @@
                         <h3>
                             1000$
                         </h3>
-                        <input type="checkbox" name="valid" id="">
+                        <input type="checkbox" name="valid" id="" class="check_input">
                     </div>
                 </div>
                 <div class="bien_child">
@@ -91,7 +89,7 @@
                         <h3>
                             1000$
                         </h3>
-                        <input type="checkbox" name="valid" id="">
+                        <input type="checkbox" name="valid" id="" class="check_input">
                     </div>
                 </div>
                 <div class="bien_child">
@@ -110,7 +108,7 @@
                         <h3>
                             1000$
                         </h3>
-                        <input type="checkbox" name="valid" id="">
+                        <input type="checkbox" name="valid" id="" class="check_input">
                     </div>
                 </div>
                 <div class="bien_child">
@@ -129,7 +127,7 @@
                         <h3>
                             1000$
                         </h3>
-                        <input type="checkbox" name="valid" id="">
+                        <input type="checkbox" name="valid" id="" class="check_input">
                     </div>
                 </div>
                 <div class="bien_child">
@@ -148,7 +146,7 @@
                         <h3>
                             1000$
                         </h3>
-                        <input type="checkbox" name="valid" id="">
+                        <input type="checkbox" name="valid" id="" class="check_input">
                     </div>
                 </div>
                 <div class="bien_child">
@@ -168,10 +166,11 @@
                         <h3>
                             1000$
                         </h3>
-                        <input type="checkbox" name="valid" id="">
+                        <input type="checkbox" name="valid" id="" class="check_input">
                     </div>
                 </div>
             </div>
+            <button id="btn_reservation" onclick="verefirerValidation()">Valider la Reservation</button>
         </section>
         <section class="enfant_container" hidden>
             <div>

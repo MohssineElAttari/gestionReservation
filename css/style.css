@@ -63,11 +63,22 @@
 .bien_parent .bien_child .img_bien a img {
     width: 100%;
     max-width: 100%;
-    filter: grayscale(1);
+    filter: grayscale(100%);
     transition: all 0.9s;
 }
 
 .bien_parent .bien_child .img_bien a img:hover {
-    filter: unset;
+    filter: none;
     transform: scale(1.5);
+}
+
+.bien_container button {
+    display: block;
+    width: fit-content;
+    margin: auto;
+    font-size: 30px;
+    font-weight: bold;
+    padding: 25px;
+    border-radius: 50px;
+    background: linear-gradient(204deg, rgba(238, 174, 202, 1) 0%, rgba(246, 0, 0, 1) 100%);
 }
