@@ -82,3 +82,23 @@
     border-radius: 50px;
     background: linear-gradient(204deg, rgba(238, 174, 202, 1) 0%, rgba(246, 0, 0, 1) 100%);
 }
+
+.bien_parent .bien_child .dates {
+    background-color: rgb(6 72 2);
+    padding: 20px 20px;
+}
+
+.bien_parent .bien_child input.date {
+    margin: auto;
+    width: 49%;
+    font-size: large;
+    text-align: center;
+    font-weight: bold;
+}
+
+section.enfant_container {
+    background: cornsilk;
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+}

@@ -28,11 +28,15 @@
                         </a>
                     </div>
                     <div class="prix_bien">
-                        <input type="number">
+                        <input type="number" id="number" name="number" min="1" max="10">
                         <h3>
-                            1000$
+                            1000 $
                         </h3>
                         <input type="checkbox" name="valid" id="" class="check_input">
+                    </div>
+                    <div class="dates">
+                        <input placeholder="Date Entrer" type="text" class="date" id="date" onfocus="(this.type='date')">
+                        <input placeholder="Date Sortie" type="text" class="date" id="date" onfocus="(this.type='date')">
                     </div>
                 </div>
                 <div class="bien_child">
@@ -47,11 +51,15 @@
                         </a>
                     </div>
                     <div class="prix_bien">
-                        <input type="number">
+                        <input type="number" id="number" name="number" min="1" max="10">
                         <h3>
-                            1000$
+                            1000 $
                         </h3>
                         <input type="checkbox" name="valid" id="" class="check_input">
+                    </div>
+                    <div class="dates">
+                        <input placeholder="Date Entrer" type="text" class="date" id="date" onfocus="(this.type='date')">
+                        <input placeholder="Date Sortie" type="text" class="date" id="date" onfocus="(this.type='date')">
                     </div>
                 </div>
                 <div class="bien_child">
@@ -66,11 +74,15 @@
                         </a>
                     </div>
                     <div class="prix_bien">
-                        <input type="number">
+                        <input type="number" id="number" name="number" min="1" max="10">
                         <h3>
-                            1000$
+                            1000 $
                         </h3>
                         <input type="checkbox" name="valid" id="" class="check_input">
+                    </div>
+                    <div class="dates">
+                        <input placeholder="Date Entrer" type="text" class="date" id="date" onfocus="(this.type='date')">
+                        <input placeholder="Date Sortie" type="text" class="date" id="date" onfocus="(this.type='date')">
                     </div>
                 </div>
                 <div class="bien_child">
@@ -85,11 +97,15 @@
                         </a>
                     </div>
                     <div class="prix_bien">
-                        <input type="number">
+                        <input type="number" id="number" name="number" min="1" max="10">
                         <h3>
-                            1000$
+                            1000 $
                         </h3>
                         <input type="checkbox" name="valid" id="" class="check_input">
+                    </div>
+                    <div class="dates">
+                        <input placeholder="Date Entrer" type="text" class="date" id="date" onfocus="(this.type='date')">
+                        <input placeholder="Date Sortie" type="text" class="date" id="date" onfocus="(this.type='date')">
                     </div>
                 </div>
                 <div class="bien_child">
@@ -104,11 +120,15 @@
                         </a>
                     </div>
                     <div class="prix_bien">
-                        <input type="number">
+                        <input type="number" id="number" name="number" min="1" max="10">
                         <h3>
-                            1000$
+                            1000 $
                         </h3>
                         <input type="checkbox" name="valid" id="" class="check_input">
+                    </div>
+                    <div class="dates">
+                        <input placeholder="Date Entrer" type="text" class="date" id="date" onfocus="(this.type='date')">
+                        <input placeholder="Date Sortie" type="text" class="date" id="date" onfocus="(this.type='date')">
                     </div>
                 </div>
                 <div class="bien_child">
@@ -123,11 +143,15 @@
                         </a>
                     </div>
                     <div class="prix_bien">
-                        <input type="number">
+                        <input type="number" id="number" name="number" min="1" max="10">
                         <h3>
-                            1000$
+                            1000 $
                         </h3>
                         <input type="checkbox" name="valid" id="" class="check_input">
+                    </div>
+                    <div class="dates">
+                        <input placeholder="Date Entrer" type="text" class="date" id="date" onfocus="(this.type='date')">
+                        <input placeholder="Date Sortie" type="text" class="date" id="date" onfocus="(this.type='date')">
                     </div>
                 </div>
                 <div class="bien_child">
@@ -142,11 +166,15 @@
                         </a>
                     </div>
                     <div class="prix_bien">
-                        <input type="number">
+                        <input type="number" id="number" name="number" min="1" max="10">
                         <h3>
-                            1000$
+                            1000 $
                         </h3>
                         <input type="checkbox" name="valid" id="" class="check_input">
+                    </div>
+                    <div class="dates">
+                        <input placeholder="Date Entrer" type="text" class="date" id="date" onfocus="(this.type='date')">
+                        <input placeholder="Date Sortie" type="text" class="date" id="date" onfocus="(this.type='date')">
                     </div>
                 </div>
                 <div class="bien_child">
@@ -162,11 +190,15 @@
                         </a>
                     </div>
                     <div class="prix_bien">
-                        <input type="number">
+                        <input type="number" id="number" name="number" min="1" max="10">
                         <h3>
-                            1000$
+                            1000 $
                         </h3>
                         <input type="checkbox" name="valid" id="" class="check_input">
+                    </div>
+                    <div class="dates">
+                        <input placeholder="Date Entrer" type="text" class="date" id="date" onfocus="(this.type='date')">
+                        <input placeholder="Date Sortie" type="text" class="date" id="date" onfocus="(this.type='date')">
                     </div>
                 </div>
             </div>
@@ -179,7 +211,7 @@
                 </h3>
                 <div class="number_input">
                     <label for="nombre">nombre des enfants</label>
-                    <input type="text" name="nombre" id="nombre" placeholder="entre le nombre des enfants">
+                    <input type="number" name="nombre" id="nombre" placeholder="Choisissez le nombre d'enfants"  min="1" max="10">
                 </div>
                 <div class="number_enfant">
 
