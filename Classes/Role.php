@@ -12,10 +12,6 @@ class Role
     {
         return $this->idRole;
     }
-    public function setIdRole($idRole)
-    {
-        $this->idRole = $idRole;
-    }
     public function getLibelle()
     {
         return $this->libelle;
