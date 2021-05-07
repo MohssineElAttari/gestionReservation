@@ -24,7 +24,7 @@ class ReservationModel extends DataBase implements IDao
             'dateEntrer' => $obj->getDateEntrer(),
             'dateSortie' => $obj->getDateSortie(),
         ]) or die('SQL');
-        header('Location: ../view/reservation.php');
+        header('Location: ../view/reservations.php');
     }
     public function update($obj)
     {
@@ -37,7 +37,7 @@ class ReservationModel extends DataBase implements IDao
 
         $req->execute() or die('SQL');
 
-        header('Location: ../view/reservation.php');
+        header('Location: ../view/reservations.php');
     }
 
     public function findAll()
