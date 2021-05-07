@@ -6,15 +6,17 @@ class Reservation
     private $idPension;
     private $dateEntrer;
     private $dateSortie;
+    private $codeReservation;
 
     //constructeur initialisation
-    function __construct($idU, $idB, $idP, $dateE, $dateS)
+    function __construct($idU, $idB, $idP, $dateE, $dateS, $codeReservation)
     {
         $this->idUtilisateur = $idU;
         $this->idBien = $idB;
         $this->idPension = $idP;
         $this->dateEntrer = $dateE;
         $this->dateSortie = $dateS;
+        $this->codeReservation = $codeReservation;
     }
 
     //getter and setter
@@ -62,5 +64,14 @@ class Reservation
     public function SetDateSortie($value): void
     {
         $this->dateSortie = $value;
+    }
+    public function getCodeReservation()
+    {
+        return $this->codeReservation;
+    }
+ 
+    public function SetCodeReservation($value): void
+    {
+        $this->codeReservation = $value;
     }
 }
