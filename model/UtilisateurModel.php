@@ -1,7 +1,7 @@
 <?php
-include_once '../classes/DataBase.php';
-include_once '../dao/IDao.php';
-include_once '../classes/Utilisateur.php';
+require_once '../classes/DataBase.php';
+require_once '../dao/IDao.php';
+require_once '../classes/Utilisateur.php';
 class Utilisateur extends Database implements IDao
 {
     private $connexion;

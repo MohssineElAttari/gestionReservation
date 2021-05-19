@@ -1,6 +1,6 @@
 <?php
-include_once '../model/RoleModel.php';
-include_once '../view/roles.php';
+require_once '../model/RoleModel.php';
+require_once '../view/roles.php';
 $roleModel = new RoleModel();
 $roles = $role->findAll();
 if (isset($_POST['ajouter'])) {

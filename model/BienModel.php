@@ -1,6 +1,7 @@
 <?php
-include '../dao/IDao.php';
-include '../classes/DataBase.php';
+require_once '../dao/IDao.php';
+require_once '../classes/DataBase.php';
+// interface data access object
 class BienModel extends DataBase implements IDao
 {
     private $connexion;

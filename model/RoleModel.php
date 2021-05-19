@@ -1,7 +1,7 @@
 <?php
-include_once '../classes/DataBase.php';
-include_once '../classes/Role.php';
-include_once '../dao/IDao.php';
+require_once '../classes/DataBase.php';
+require_once '../classes/Role.php';
+require_once '../dao/IDao.php';
 class RoleModel extends DataBase implements IDao
 {
     private $connexion;

@@ -4,28 +4,33 @@ let divEnfant = document.querySelector('.enfant_container');
 var text_price = 0;
 let nombre_res = 0;
 let prix_bien_total = 0;
-console.log(divEnfant);
+// console.log(divEnfant);
 let nombreInput = document.querySelector("#nombre");
 let enfantChild = document.querySelector(".number_enfant");
 let nombre;
 // bien.addeventlistener(function())
-console.log(check_input);
+// console.log(check_input);
 
 // Array.from(checke).forEach(function(elm) {
 //     elm.addEventListener("change", verefirer_check)
 // });
 
-// boucle pour ajouter un EventListener
-for (let i = 0; i < check_input.length; i++) {
-    // console.log(check[i]);
-    check_input[i].addEventListener("change", verefirer_check);
+document.onload = MyAddEventListener();
 
-    check_input[i].parentElement.childNodes[1].addEventListener("change", function(e) {
-        console.log("once");
-        text_price = parseInt(e.target.parentElement.childNodes[3].innerHTML);
-    }, { once: true });
+function MyAddEventListener() {
+    // boucle pour ajouter un EventListener in nodelist (check Box)
+    for (let i = 0; i < check_input.length; i++) {
+        // console.log(check[i]);
+        check_input[i].addEventListener("change", verefirer_check);
+        // Afin de ne recevoir le prix de bien qu'une seule fois
+        check_input[i].parentElement.children[0].addEventListener("change", function(e) {
+            // console.log("once");
+            // console.log(check_input[i].parentElement.children[0].value);
+            text_price = parseInt(e.target.parentElement.children[2].innerText);
+        }, { once: true });
 
-    check_input[i].parentElement.childNodes[1].addEventListener("change", getPrice);
+        check_input[i].parentElement.children[0].addEventListener("change", getPrice);
+    }
 }
 
 let compteur = 0;
@@ -34,46 +39,135 @@ button_reservation.disabled = true;
 
 //les fonctions
 function getPrice(e) {
-    // text_price = parseInt(e.target.parentElement.childNodes[3].innerHTML);
-    // console.log(e.target.parentElement.childNodes[3].innerHTML);
-    nombre_res = parseInt(e.target.parentElement.childNodes[1].value);
-    console.log(text_price);
-    console.log(nombre_res);
+    nombre_res = parseInt(e.target.parentElement.children[0].value);
     prix_bien_total = text_price * nombre_res;
-    console.log(prix_bien_total);
-    // console.log(nombre_res);
-    e.target.parentElement.childNodes[3].innerHTML = prix_bien_total + " $";
-    // console.log(nombre_res);
+    // console.log(prix_bien_total);
+    e.target.parentElement.children[2].innerHTML = prix_bien_total + " $";
 }
 
+let dateChengeE = false;
+let dateChengeS = false;
+
+function verefirer_date(dateEntre, dateSortie) {
+    dateChengeE = false;
+    dateChengeS = false;
+    if (dateEntre.value != "") {
+        dateChengeE = true;
+    } else {
+        dateChengeE = false;
+    }
+
+    if (dateSortie.value != "") {
+        dateChengeS = true;
+
+    } else {
+        console.log(dateChengeS);
+    }
+
+    dateEntre.addEventListener("change", function() {
+        if (dateEntre.value != "") {
+            dateChengeE = true;
+        }
+    })
+    dateSortie.addEventListener("change", function() {
+        if (dateSortie.value != "") {
+            dateChengeS = true;
+        }
+    })
+
+}
+
+let IDBienTab = [];
+
+
 function verefirer_check(e) {
-    let element = e.srcElement;
-    let = image_child = element.parentElement.parentElement.childNodes[3].childNodes[1].childNodes[1];
+    let element = e.target;
+
+    let image_child = element.parentElement.parentElement.childNodes[3].childNodes[1].childNodes[1];
+    let idBien = element.parentElement.children[1].value;
+
+    let dateEntre = element.parentElement.parentElement.children[3].children[0];
+    let dateSortie = element.parentElement.parentElement.children[3].children[1];
+
+    verefirer_date(dateEntre, dateSortie);
+
     // console.log(button_reservation);
     if (element.checked) {
         image_child.style.filter = "none";
+
+        if (!dateChengeE && !dateChengeS) {
+            alert("entrer la date");
+            button_reservation.disabled = true;
+            console.log("wawa");
+        } else {
+            button_reservation.disabled = false;
+        }
         compteur++;
+        IDBienTab.push(idBien);
     } else {
+        button_reservation.disabled = true;
         image_child.style.filter = "grayscale(100%)";
         compteur--;
+        let index = IDBienTab.indexOf(idBien);
+        IDBienTab.splice(index, 1);
+        delete data[idBien];
+        console.log(compteur);
+
     }
     console.log(compteur);
-    if (compteur == 0) {
+    console.log(IDBienTab);
+    if (compteur == 0 || !dateChengeE && !dateChengeS) {
         button_reservation.disabled = true;
         divEnfant.setAttribute("hidden", true);
-    } else {
+    } else if (dateChengeE && dateChengeS && compteur == 0) {
         button_reservation.disabled = false;
     }
 }
+let data = {
+
+};
 
 function verefirerValidation() {
     if (!button_reservation.disabled) {
         divEnfant.removeAttribute("hidden");
+        IDBienTab.forEach(id => {
+            let numberPlace = document.getElementById('number_' + id).value;
+            let dateEntre = document.getElementById('dateEntrer_' + id).value;
+            let dateSortie = document.getElementById('dateSortie_' + id).value;
+            let price = document.getElementById('price_' + id).innerText;
+
+            data[id] = {
+                "numberPlace": numberPlace,
+                "dateEntre": dateEntre,
+                "dateSortie": dateSortie,
+                "price": price
+            };
+        });
+        console.log("hahowa", data);
     } else {
         setAttribute("hidden", true);
     }
 }
 
+function sendData() {
+
+    console.log(data);
+
+    fetch('../controller/ReservationController.php?action=add', {
+            method: 'POST', // or 'PUT'
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        })
+        .then(response => response.text())
+        .then(data => {
+            console.log('Success:', data);
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+}
 nombreInput.addEventListener("change", function() {
     nombre = parseInt(nombreInput.value)
     if (nombre > 0 && nombre <= 10) {;

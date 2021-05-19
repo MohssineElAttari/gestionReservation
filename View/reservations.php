@@ -15,12 +15,7 @@ require_once '../controller/BienController.php';
 </head>
 
 <body>
-    <?php 
-    var_dump($_POST);
-    // $post = file_get_contents('php://input');
-    // $resultArray = explode("&", $post);
-    // var_dump($resultArray);
-    ?>
+
     <div class="container_res">
         <section class="bien_container">
                 <h2>choisir un bien</h2>
@@ -55,6 +50,7 @@ require_once '../controller/BienController.php';
 
                 </div>
                 <button id="btn_reservation" type="submit" onclick="verefirerValidation()">Valider la Reservation</button>
+                <button id="btn_send" type="submit" onclick="sendData()">send Data</button>
         </section>
         <section class="enfant_container" hidden>
             <div>
