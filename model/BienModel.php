@@ -1,6 +1,7 @@
 <?php
 require_once '../dao/IDao.php';
-require_once '../classes/DataBase.php';
+// require_once '../classes/DataBase.php';
+require_once '../includes/autoload.inc.php';
 // interface data access object
 class BienModel extends DataBase implements IDao
 {

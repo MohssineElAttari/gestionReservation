@@ -1,5 +1,5 @@
 <?php
-
+require_once 'includes/autoload.inc.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">

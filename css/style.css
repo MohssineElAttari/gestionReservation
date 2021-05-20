@@ -16,6 +16,48 @@
     justify-content: center;
 }
 
+nav.menu--horiz {
+    margin: 0 30em;
+}
+
+.menu--horiz ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.menu--horiz li {
+    flex-grow: 1;
+    transition: all 900ms ease-in-out;
+}
+
+.menu--horiz li:hover {
+    flex-grow: 5;
+    transition: all 300ms ease-in-out;
+}
+
+.menu--horiz li:not(:last-of-type) {
+    margin-right: 1px;
+}
+
+.menu--horiz a {
+    display: block;
+    background: orange;
+    padding: 1em 2em;
+    color: #eee;
+    text-decoration: none;
+    text-align: center;
+}
+
+.menu--horiz a:hover,
+.menu--horiz li.active a {
+    background: red;
+}
+
 .bien_parent .bien_child {
     margin: 30px 30px;
     filter: blur();

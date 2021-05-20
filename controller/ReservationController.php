@@ -1,8 +1,6 @@
 <?php
 require_once '../model/ReservationModel.php';
 $reservationModel = new ReservationModel();
-
-
 $action = isset($_GET['action']) ? $_GET['action'] : 'index';
 
 
@@ -29,19 +27,13 @@ function addReservation()
 
     $json = file_get_contents('php://input');
 
-    // Use json_decode() function to
-    // decode a string
+    // Use json_decode() function to decode a string
     $obj = json_decode($json);
-
     // var_dump($obj) ;
-
 
     if (isset($json) && !empty($json)) {
 
-        
         // Display the value of json object
-        
-
         foreach ($obj as $key => $value) {
             echo "bien_id : ". $key . "\n";
             echo "numberPlace : " . $value->{'numberPlace'} . "\n";
