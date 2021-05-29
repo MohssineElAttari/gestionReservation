@@ -15,6 +15,7 @@ require_once 'includes/autoload.inc.php';
     <h1><a href="View/reservations.php">Reservation</a></h1>
     <h1><a href="View/login.php">Login</a></h1>
     <h1><a href="View/register.php">Register</a></h1>
+    <h1><a href="View/resever.php">Resever</a></h1>
 </body>
 
 </html>

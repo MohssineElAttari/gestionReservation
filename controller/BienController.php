@@ -1,6 +1,5 @@
 <?php
 require_once '../model/BienModel.php';
-require_once '../view/biens.php';
 $bienModel = new BienModel();
 $biens = $bienModel->findAll();
 if (isset($_POST['ajouter'])) {

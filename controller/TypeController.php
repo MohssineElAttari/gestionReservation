@@ -1,6 +1,8 @@
 <?php
 require_once '../model/TypeModel.php';
 $typeModel = new TypeModel();
+$typeBiens = $typeModel->findAll();
+
 if (isset($_POST['ajouter'])) {
     echo $_POST['type'];
 
@@ -13,5 +15,5 @@ if (isset($_GET['delete'])) {
     echo '<script>alert("ok");</script>';
     $id = $_GET['delete'];
 
-    $roleModel->delete($id);
+    $typeModel->delete($id);
 }

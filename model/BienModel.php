@@ -15,7 +15,7 @@ class BienModel extends DataBase implements IDao
     {
         // var_dump($obj);
         // echo $obj->getIdUtilisateur();
-        $query = "INSERT INTO Bien(nom,vue,prix,image) VALUES (:nom,:vue,:prix,:image)";
+        $query = "INSERT INTO bien(nom,vue,prix,image) VALUES (:nom,:vue,:prix,:image)";
 
         $req = $this->connexion->getConnexion()->prepare($query);
 
@@ -43,7 +43,7 @@ class BienModel extends DataBase implements IDao
 
     public function findAll()
     {
-        $query = "select * from bien";
+        $query = "select * from bien AS b INNER JOIN tarification AS t on (t.id = b.id_tarification) INNER JOIN type_bien AS tb on (b.id_type=tb.id)";
         $req = $this->connexion->getConnexion()->prepare($query);
         $req->execute();
         return $req->fetchAll(PDO::FETCH_ASSOC);

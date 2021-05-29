@@ -1,75 +1,47 @@
+<?php
+
+include '../controller/AuthentificationController.php';
+
+?>
+
 <!DOCTYPE html>
 <html>
 
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title> Register Page </title>
-    <style>
-        Body {
-            font-family: Calibri, Helvetica, sans-serif;
-            background-color: pink;
-        }
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        button {
-            background-color: #4CAF50;
-            width: 100%;
-            color: orange;
-            padding: 15px;
-            margin: 10px 0px;
-            border: none;
-            cursor: pointer;
-        }
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-        form {
-            border: 3px solid #f1f1f1;
-        }
-
-        input[type=text],
-        input[type=password] {
-            width: 100%;
-            margin: 8px 0;
-            padding: 12px 20px;
-            display: inline-block;
-            border: 2px solid green;
-            box-sizing: border-box;
-        }
-
-        button:hover {
-            opacity: 0.7;
-        }
-
-        .cancelbtn {
-            width: auto;
-            padding: 10px 18px;
-            margin: 10px 5px;
-        }
-
-
-        .container {
-            padding: 25px;
-            background-color: lightblue;
-        }
-    </style>
+	<link rel="stylesheet" type="text/css" href="../css/auth.css">
+	<title>Register</title>
 </head>
 
 <body>
-    <center>
-        <h1>Register</h1>
-    </center>
-    <form>
-        <div class="container">
-            <label>Nom : </label>
-            <input type="text" placeholder="Enter Nom" name="nom" required>
-            <label>Prenom : </label>
-            <input type="text" placeholder="Enter Prenom" name="prenom" required>
-            <label>email : </label>
-            <input type="text" placeholder="Enter Email" name="email" required>
-            <label>Password : </label>
-            <input type="password" placeholder="Enter Password" name="password" required>
-            <button type="submit">Login</button>
-            <a href="login.php"> login </a>
-        </div>
-    </form>
+	<div class="container">
+		<form action="../controller/AuthentificationController.php" method="POST" class="login-email">
+			<p class="login-text" style="font-size: 2rem; font-weight: 800;">Register</p>
+			<div class="input-group">
+				<input type="text" placeholder="Prenom" name="prenom" value="<?php echo $username; ?>" required>
+			</div>
+			<div class="input-group">
+				<input type="text" placeholder="Nom" name="nom" value="<?php echo $username; ?>" required>
+			</div>
+			<div class="input-group">
+				<input type="email" placeholder="Email" name="email" value="<?php echo $email; ?>" required>
+			</div>
+			<div class="input-group">
+				<input type="password" placeholder="Password" name="password" value="<?php echo $_POST['password']; ?>" required>
+			</div>
+			<div class="input-group">
+				<input type="password" placeholder="Confirm Password" name="cpassword" value="<?php echo $_POST['cpassword']; ?>" required>
+			</div>
+			<div class="input-group">
+				<button name="inscription" class="btn">Register</button>
+			</div>
+			<p class="login-register-text">Have an account? <a href="../view/login.php">Login Here</a>.</p>
+		</form>
+	</div>
 </body>
 
 </html>

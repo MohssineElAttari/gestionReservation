@@ -1,77 +1,33 @@
 <?php
 class Reservation
 {
+    private $idReservation;
     private $idUtilisateur;
-    private $idBien;
-    private $idPension;
-    private $dateEntrer;
-    private $dateSortie;
-    private $codeReservation;
+    private $dateCreation;
 
     //constructeur initialisation
-    function __construct($idU, $idB, $idP, $dateE, $dateS, $codeReservation)
+    function __construct($idU)
     {
         $this->idUtilisateur = $idU;
-        $this->idBien = $idB;
-        $this->idPension = $idP;
-        $this->dateEntrer = $dateE;
-        $this->dateSortie = $dateS;
-        $this->codeReservation = $codeReservation;
     }
 
     //getter and setter
+    public function getIdReservation()
+    {
+        return $this->idReservation;
+    }
+
     public function getIdUtilisateur()
     {
         return $this->idUtilisateur;
     }
-
     public function SetIdUtilisateur($value): void
     {
         $this->idUtilisateur = $value;
     }
-    public function getIdBien()
-    {
-        return $this->idBien;
-    }
 
-    public function SetIdBien($value): void
+    public function getDateCreation()
     {
-        $this->idBien = $value;
-    }
-    public function getIdPension()
-    {
-        return $this->idPension;
-    }
-
-    public function SetIdPension($value): void
-    {
-        $this->idPension = $value;
-    }
-    public function getDateEntrer()
-    {
-        return $this->dateEntrer;
-    }
-
-    public function SetDateEntrer($value): void
-    {
-        $this->dateEntrer = $value;
-    }
-    public function getDateSortie()
-    {
-        return $this->dateSortie;
-    }
-
-    public function SetDateSortie($value): void
-    {
-        $this->dateSortie = $value;
-    }
-    public function getCodeReservation()
-    {
-        return $this->codeReservation;
-    }
- 
-    public function SetCodeReservation($value): void
-    {
-        $this->codeReservation = $value;
+        return $this->dateCreation;
     }
 }

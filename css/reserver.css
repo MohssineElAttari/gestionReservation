@@ -1,0 +1,302 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #bbbbbb;
+}
+
+.myReservation {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 50px;
+}
+
+.cardRes {
+    width: 450px;
+    position: fixed;
+    /* z-index: 1; */
+    top: 20px;
+    right: 50px;
+    /* background: #eee; */
+    /* overflow-x: hidden; */
+    padding: 8px 0;
+}
+
+.myForm {
+    width: 80em;
+    background: white;
+}
+
+.menu-horizontal ul {
+    display: flex;
+    list-style: none;
+    margin: auto;
+    padding: 0;
+    width: 90%;
+    border-radius: 10px;
+    overflow: hidden;
+    flex-wrap: wrap;
+}
+
+.menu-horizontal li {
+    flex-grow: 1;
+    transition: all 900ms ease-in-out;
+}
+
+.menu-horizontal li:hover {
+    flex-grow: 4;
+    transition: all 300ms ease-in-out;
+}
+
+.menu-horizontal li:not(:last-of-type) {
+    margin-right: 1px;
+}
+
+.menu-horizontal a {
+    display: block;
+    background: #6495ED;
+    padding: 1em 2em;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.menu-horizontal a:hover,
+.menu-horizontal li.active a {
+    background: #40E0D0;
+}
+
+.bien_parent {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.bien_parent .bien_child {
+    margin: 30px 30px;
+    filter: blur();
+    width: 365px;
+    height: fit-content;
+}
+
+
+/* .bien_parent .bien_child {} */
+
+.bien_parent .bien_child .title_bien {
+    padding: 5px;
+    font-size: large;
+    font-weight: bold;
+    background-color: brown;
+    color: white;
+    text-align: center;
+}
+
+.bien_parent .bien_child .prix_bien {
+    display: flex;
+    padding: 5px;
+    font-size: large;
+    font-weight: bold;
+    background-color: rgb(6 72 2);
+    color: rgb(255 255 255);
+    text-align: center;
+    justify-content: space-around;
+    align-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.bien_parent .bien_child .prix_bien>input {
+    width: 60px;
+    height: 40px;
+}
+
+.bien_parent .bien_child .img_bien {
+    display: block;
+    overflow: hidden;
+    height: 200px;
+}
+
+.bien_parent .bien_child .img_bien a img {
+    width: 100%;
+    max-width: 100%;
+    filter: grayscale(100%);
+    transition: all 0.9s;
+}
+
+.bien_parent .bien_child .img_bien a img:hover {
+    filter: none;
+    transform: scale(1.5);
+}
+
+.bien_container button {
+    display: block;
+    width: fit-content;
+    margin: auto;
+    font-size: 30px;
+    font-weight: bold;
+    padding: 25px;
+    border-radius: 50px;
+    background: linear-gradient(204deg, rgba(238, 174, 202, 1) 0%, rgba(246, 0, 0, 1) 100%);
+}
+
+.bien_parent .bien_child .dates {
+    background-color: rgb(6 72 2);
+    padding: 20px 20px;
+}
+
+.bien_parent .bien_child input.date {
+    margin: auto;
+    width: 49%;
+    font-size: large;
+    text-align: center;
+    font-weight: bold;
+}
+
+section.enfant_container {
+    background: cornsilk;
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+}
+
+.show {
+    display: block;
+}
+
+.hide {
+    display: none;
+}
+
+body {
+    background-color: #f1f1f1;
+}
+
+#resForm {
+    background-color: #ffffff;
+    margin: 100px 50px;
+    font-family: Raleway;
+    padding: 40px;
+    width: 70%;
+    min-width: 300px;
+}
+
+h1 {
+    text-align: center;
+}
+
+input {
+    padding: 10px;
+    width: 100%;
+    font-size: 17px;
+    font-family: Raleway;
+    border: 1px solid #aaaaaa;
+}
+
+
+/* Mark input boxes that gets an error on validation: */
+
+input.invalid {
+    background-color: #ffdddd;
+}
+
+
+/* Hide all steps by default: */
+
+.tab {
+    display: none;
+}
+
+button {
+    background-color: #04AA6D;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 17px;
+    font-family: Raleway;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+#prevBtn {
+    background-color: #bbbbbb;
+}
+
+
+/* Make circles that indicate the steps of the form: */
+
+.step {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbbbbb;
+    border: none;
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0.5;
+}
+
+.step.active {
+    opacity: 1;
+}
+
+
+/* Mark the steps that are finished and valid: */
+
+.step.finish {
+    background-color: #04AA6D;
+}
+
+
+/* model */
+
+.modelBien {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(1.1);
+    transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+}
+
+.modelBien-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 1rem 1.5rem;
+    width: 50%;
+    border-radius: 0.5rem;
+}
+
+.close-button {
+    float: right;
+    width: 1.5rem;
+    line-height: 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    background-color: lightgray;
+}
+
+.close-button:hover {
+    background-color: darkgray;
+}
+
+.show-modelBien {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1.0);
+    transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+}

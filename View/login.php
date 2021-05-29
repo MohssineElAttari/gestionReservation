@@ -1,72 +1,38 @@
+<?php
+
+include '../controller/AuthentificationController.php';
+?>
+
 <!DOCTYPE html>
 <html>
 
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title> Login Page </title>
-    <style>
-        Body {
-            font-family: Calibri, Helvetica, sans-serif;
-            background-color: pink;
-        }
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        button {
-            background-color: #4CAF50;
-            width: 100%;
-            color: orange;
-            padding: 15px;
-            margin: 10px 0px;
-            border: none;
-            cursor: pointer;
-        }
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-        form {
-            border: 3px solid #f1f1f1;
-        }
+    <link rel="stylesheet" type="text/css" href="../css/auth.css">
 
-        input[type=text],
-        input[type=password] {
-            width: 100%;
-            margin: 8px 0;
-            padding: 12px 20px;
-            display: inline-block;
-            border: 2px solid green;
-            box-sizing: border-box;
-        }
-
-        button:hover {
-            opacity: 0.7;
-        }
-
-        .cancelbtn {
-            width: auto;
-            padding: 10px 18px;
-            margin: 10px 5px;
-        }
-
-
-        .container {
-            padding: 25px;
-            background-color: lightblue;
-        }
-    </style>
+    <title>Login</title>
 </head>
 
 <body>
-    <center>
-        <h1>Login</h1>
-    </center>
-    <form>
-        <div class="container">
-            <label>Nom : </label>
-            <input type="text" placeholder="Enter Nom" name="nom" required>
-            <label>Prenom : </label>
-            <input type="password" placeholder="Enter Prenom" name="prenom" required>
-            <button type="submit">Login</button>
-            <input type="checkbox" checked="checked"> Remember me
-            <a href="register.php"> register </a>
-        </div>
-    </form>
+    <div class="container">
+        <form action="#" method="POST" class="login-email">
+            <p class="login-text" style="font-size: 2rem; font-weight: 800;">Login</p>
+            <div class="input-group">
+                <input type="email" placeholder="Email" name="email" value="" required>
+            </div>
+            <div class="input-group">
+                <input type="password" placeholder="Password" name="password" value="" required>
+            </div>
+            <div class="input-group">
+                <button name="login" class="btn">Login</button>
+            </div>
+            <p class="login-register-text">Don't have an account? <a href="register.php">Register Here</a>.</p>
+        </form>
+    </div>
 </body>
 
 </html>

@@ -1,6 +1,7 @@
 <?php
 require_once '../controller/ReservationController.php';
 require_once '../controller/BienController.php';
+require_once '../controller/TypeController.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,6 +11,7 @@ require_once '../controller/BienController.php';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reservations</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/style.css">
     <script src="../js/script.js" defer></script>
 </head>
@@ -18,44 +20,50 @@ require_once '../controller/BienController.php';
 
     <div class="container_res">
         <section class="bien_container">
+
             <h2>choisir un bien</h2>
-            <nav class="menu--horiz">
-                <ul>
-                    <li class="active"><a href="#">All</a></li>
-                    <li><a href="#">Appartement</a></li>
-                    <li><a href="#">Bungalow</a></li>
-                    <li><a href="#">Chambre</a></li>
-                </ul>
-            </nav>
-            <div class="bien_parent">
-                <?php foreach ($biens as $bien) : ?>
-                    <div class="bien_child">
-                        <div class="title_bien">
-                            <h3 class="title">
-                                <?php echo $bien['nom']; ?>
-                            </h3>
-                        </div>
-                        <div class="img_bien">
+            <div class="row">
+                <div class="bien_parent col-10">
+                    <nav class="menu--horiz row">
+                        <ul class="menu-horizontal">
 
-                            <a href="#">
-                                <img src="../src/images/<?php echo $bien['image']; ?>" alt="<?php echo $bien['image']; ?>" class="img">
-                            </a>
+                            <li data-type="all" class="active"><a href="#">All</a></li>
+                            <?php foreach ($typeBiens as $typeBien) : ?>
+                                <li data-type="<?php echo $typeBien['id']; ?>"><a href="#"><?php echo $typeBien['type']; ?></a></li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </nav>
+                    <div class="row">
+                    <?php foreach ($biens as $bien) : ?>
+                        <div class="bien_child show" data-bien="<?php echo $bien['id_type']; ?>">
+                            <div class="title_bien">
+                                <h3 class="title">
+                                    <?php echo $bien['nom']; ?>
+                                </h3>
+                            </div>
+                            <div class="img_bien">
+
+                                <a href="#">
+                                    <img src="../src/images/<?php echo $bien['image']; ?>" alt="<?php echo $bien['image']; ?>" class="img">
+                                </a>
+                            </div>
+                            <div class="prix_bien">
+                                <input type="number" id="number_<?php echo $bien['id_bien']; ?>" name="numberOfBien" value="1" min="1" max="10">
+                                <input type="text" value="<?php echo $bien['id_bien']; ?>" name="idBein" hidden>
+                                <h3 id="price_<?php echo $bien['id_bien']; ?>">
+                                    <?php echo $bien['prix'] . " $"; ?>
+                                </h3>
+                                <input type="checkbox" name="validCheck" id="validCheck" class="check_input">
+                            </div>
+                            <div class="dates">
+                                <input placeholder="Date Entrer" name="dateEntrer" type="text" class="date" id="dateEntrer_<?php echo $bien['id_bien']; ?>" onfocus="(this.type='date')">
+                                <input placeholder="Date Sortie" name="dateSortie" type="text" class="date" id="dateSortie_<?php echo $bien['id_bien']; ?>" onfocus="(this.type='date')">
+                            </div>
                         </div>
-                        <div class="prix_bien">
-                            <input type="number" id="number_<?php echo $bien['id_bien']; ?>" name="numberOfBien" value="1" min="1" max="10">
-                            <input type="text" value="<?php echo $bien['id_bien']; ?>" name="idBein" hidden>
-                            <h3 id="price_<?php echo $bien['id_bien']; ?>">
-                                <?php echo $bien['prix'] . " $"; ?>
-                            </h3>
-                            <input type="checkbox" name="validCheck" id="validCheck" class="check_input">
-                        </div>
-                        <div class="dates">
-                            <input placeholder="Date Entrer" name="dateEntrer" type="text" class="date" id="dateEntrer_<?php echo $bien['id_bien']; ?>" onfocus="(this.type='date')">
-                            <input placeholder="Date Sortie" name="dateSortie" type="text" class="date" id="dateSortie_<?php echo $bien['id_bien']; ?>" onfocus="(this.type='date')">
-                        </div>
+                    <?php endforeach; ?>
                     </div>
-                <?php endforeach; ?>
-
+                </div>
+                <div class="col-2">tetsjgkj </div>
             </div>
             <button id="btn_reservation" type="submit" onclick="verefirerValidation()">Valider la Reservation</button>
             <button id="btn_send" type="submit" onclick="sendData()">send Data</button>

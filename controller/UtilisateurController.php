@@ -1,6 +1,5 @@
 <?php
 require_once '../model/UtilisateurModel.php';
-require_once '../view/Utilisateur.php';
 $roleModel = new RoleModel();
 $roles = $roleModel->findAll();
 if (isset($_POST['ajouter'])) {
@@ -17,4 +16,3 @@ if (isset($_GET['delete'])) {
 
     $roleModel->delete($id);
 }
-
