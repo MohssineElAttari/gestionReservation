@@ -12,6 +12,15 @@ let btnReservation = document.querySelector("#btn_reserver");
 let nombre;
 let menuHorizontal = document.querySelector(".menu-horizontal");
 btnReservation.addEventListener("click", function() {
+    // alert(compteur);
+    if (compteur > 0) {
+        confirmationDate();
+    } else {
+        swal("Vous n'avez sélectionné aucune bien", "Choisissez au moins un Bien !");
+    }
+});
+
+function confirmationDate() {
     swal({
             title: "Confirmation de réservation",
             text: "Voulez-vous vraiment réserver !",
@@ -26,12 +35,10 @@ btnReservation.addEventListener("click", function() {
                 });
                 sendData();
             } else {
-                swal("Félicitations, votre réservation a réussi");
+                swal("Réservation annulée");
             }
         });
-
-})
-
+}
 console.log(menuHorizontal);
 // bien.addeventlistener(function())
 // console.log(check_input);
@@ -208,7 +215,7 @@ function verefirer_check(e) {
 
     if (element.checked) {
         image_child.style.filter = "none";
-
+        saveData(idBien);
         console.log(dataType.dataset.bien > 2);
         if (dataType.dataset.bien > 2) {
             prevBtn.addEventListener('click', function(e) {
@@ -238,13 +245,8 @@ function verefirer_check(e) {
 
 
         }
-
-
-        // button_reservation.disabled = false;
-
         compteur++;
         IDBienTab.push(idBien);
-        saveData(idBien);
     } else {
 
 
@@ -300,42 +302,41 @@ function verefirerValidation() {
     // }
 }
 
-// function et the size of an object
-function siezData(data) {
-    Object.size = function(obj) {
-        var size = 0,
-            key;
-        for (key in obj) {
-            if (obj.hasOwnProperty(key)) size++;
-        }
-        return size;
-    };
+// // function et the size of an object
+// function siezData(data) {
+//     Object.size = function(obj) {
+//         var size = 0,
+//             key;
+//         for (key in obj) {
+//             if (obj.hasOwnProperty(key)) size++;
+//         }
+//         return size;
+//     };
 
-    // Get the size of an object
-    var size = Object.size(data);
-    return size;
-}
+//     // Get the size of an object
+//     var size = Object.size(data);
+//     return size;
+// }
 
 function sendData() {
     console.log(data);
 
     console.log(size);
-
-    // fetch('../controller/ReservationController.php?action=add', {
-    //         method: 'POST', // or 'PUT'
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //         },
-    //         body: JSON.stringify(data),
-    //     })
-    //     .then(response => response.text())
-    //     .then(data => {
-    //         console.log('Success:', data);
-    //     })
-    //     .catch((error) => {
-    //         console.error('Error:', error);
-    //     });
-    // return data;
+    fetch('../controller/ReservationController.php?action=add', {
+            method: 'POST', // or 'PUT'
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        })
+        .then(response => response.text())
+        .then(data => {
+            console.log('Success:', data);
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+    return data;
 }
 
 

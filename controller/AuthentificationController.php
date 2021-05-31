@@ -1,5 +1,5 @@
 <?php
-// ob_start();
+ob_start();
 session_start();
 error_reporting(0);
 
@@ -67,4 +67,4 @@ if (isset($_POST['login'])) {
     }
 }
 
-// ob_end_flush();
+ob_end_flush();

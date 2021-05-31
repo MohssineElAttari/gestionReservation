@@ -14,7 +14,7 @@ class Authentification extends DataBase
     {
         // var_dump($obj);
         // return;
-        // echo $obj->getPrenom();
+        echo $obj->getPrenom();
         // return $obj->getIdRole()."<br>".$obj->getPrenom()."<br>".$obj->getNom()."<br>".$obj->getEmail()."<br>".$obj->getPassword();
         $query = "INSERT INTO utilisateur(id_role,nom,prenom,email,`password`) VALUES (:idRole,:Nom,:Prenom,:Email,:Password)";
 
