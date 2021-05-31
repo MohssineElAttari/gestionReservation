@@ -11,6 +11,13 @@ let btnReservation = document.querySelector("#btn_reserver");
 
 let nombre;
 let menuHorizontal = document.querySelector(".menu-horizontal");
+
+let nombre_Reservation = document.querySelector(".card-nombre");
+let nombre_enfant = document.querySelector(".card-enfant");
+let prix_Pension = document.querySelector(".card-Pension");
+let total_Reservation = document.querySelector(".card-total");
+
+
 btnReservation.addEventListener("click", function() {
     // alert(compteur);
     if (compteur > 0) {
@@ -157,6 +164,8 @@ let data = {
 
 };
 
+
+
 function saveData(idBien) {
 
     let numberPlace = document.getElementById('number_' + idBien).value;
@@ -198,6 +207,7 @@ function verefirer_check(e) {
     let image_child = element.parentElement.parentElement.childNodes[3].childNodes[1].childNodes[1];
     let idBien = element.parentElement.children[1].value;
     let dataType = element.parentElement.parentElement;
+    let total = parseInt(total_Reservation.innerHTML);
     // let modelBien = element.parentElement.parentElement.parentElement;
     // verefirer_date(dateEntre, dateSortie);
 
@@ -246,9 +256,12 @@ function verefirer_check(e) {
 
         }
         compteur++;
+        nombre_Reservation.innerHTML = compteur;
+        total_Reservation.innerHTML = total + parseInt(document.getElementById('price_' + idBien).innerText);
         IDBienTab.push(idBien);
     } else {
 
+        total_Reservation.innerHTML = total - parseInt(document.getElementById('price_' + idBien).innerText);
 
         closeButton.addEventListener("click", function() {
             currentTab = 0;
@@ -433,6 +446,7 @@ function showTab(n, idBien) {
         nextBtn.innerHTML = "Submit";
         nextBtn.dataset.action = "submit";
 
+
     } else {
 
         const nextBtn = document.querySelector(".nextBtn_" + idBien);
@@ -446,7 +460,14 @@ function showTab(n, idBien) {
 
 
 function nextPrev(action, n, idBien) {
+    const selectPension = document.querySelector(`#pension_${idBien}`);
+    const imagePension = document.querySelector(`#imagePension_${idBien}`);
+    let closeBtn = document.querySelector(`#modal_${idBien}`);
+    selectPension.addEventListener("change", function() {
+        imagePension.src = "../src/images/" + selectPension.value + ".jpg";
+    })
     if (action == "submit") {
+        closeBtn.style.display = "none";
         saveData(idBien);
         return;
     }

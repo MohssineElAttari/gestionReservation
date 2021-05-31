@@ -112,7 +112,7 @@ require_once '../controller/PensionController.php';
                       <div class="tab tab_<?php echo $bien['id_bien']; ?>">
                         <h1>Les Pension :</h1>
                         <section class="pension_container">
-                          <div>
+                          <div class="content_tab_p">
                             <div class="pension_select">
                               <select name="" id="pension_<?php echo $bien['id_bien']; ?>">
                                 <?php foreach ($pensions as $pension) : ?>
@@ -122,6 +122,7 @@ require_once '../controller/PensionController.php';
                                 <?php endforeach; ?>
                               </select>
                             </div>
+                            <img src="../src/images/1.jpg" id="imagePension_<?php echo $bien['id_bien']; ?>" alt="" srcset="" class="img_pension">
                           </div>
                         </section>
 
@@ -150,24 +151,24 @@ require_once '../controller/PensionController.php';
                 <div class="col-md-12 col-lg-12 order-md-last">
                   <h4 class="d-flex justify-content-between align-items-center mb-3">
                     <span class="text-primary">nombre de reservations</span>
-                    <span class="badge bg-primary rounded-pill">3</span>
+                    <span class="badge bg-primary rounded-pill card-nombre">0</span>
                   </h4>
                   <ul class="list-group mb-3">
                     <li class="list-group-item d-flex justify-content-between lh-sm">
                       <div>
                         <h6 class="my-0">les enfants</h6>
                       </div>
-                      <span class="text-muted">DH</span>
+                      <span class="text-muted card-enfant">0</span>
                     </li>
                     <li class="list-group-item d-flex justify-content-between lh-sm">
                       <div>
                         <h6 class="my-0">Pension</h6>
                       </div>
-                      <span class="text-muted">DH</span>
+                      <span class="text-muted card-Pension">0 $</span>
                     </li>
                     <li class="list-group-item d-flex justify-content-between">
-                      <span>Total (DH)</span>
-                      <strong>20</strong>
+                      <span>Total ($)</span>
+                      <strong class="card-total">0</strong>
                     </li>
                   </ul>
                 </div>
