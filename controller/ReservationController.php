@@ -2,13 +2,21 @@
 
 use function PHPSTORM_META\type;
 
+session_start();
 require '../model/ReservationModel.php';
 require '../model/PanierModel.php';
 $reservationModel = new ReservationModel();
 $panierModel = new PanierModel();
 $action = isset($_GET['action']) ? $_GET['action'] : 'index';
 
-
+if (empty(@$_SESSION['id'])) {
+    header('Location: ../view/login.php');
+}
+if (isset($_GET['logout'])) {
+    session_destroy();
+    header('Location: ../view/login.php');
+}
+$_SESSION['LogOut'] = '../view/reserver.php?logout=1';
 switch ($action) {
     case 'add':
         addReservation();
@@ -35,8 +43,8 @@ function getIdReservation()
 function addReservation()
 {
 
-    
-    
+
+
     global $reservationModel;
     global $panierModel;
     $json = file_get_contents('php://input');
@@ -48,41 +56,33 @@ function addReservation()
     $reservationModel->create(new Reservation($idUtilisateur));
     $codeReservation = getIdReservation();
 
-   
+
     //echo $obj ;
-    try {
-        if (isset($json) && !empty($json)) {
-            try {
-                // Display the value of json object
-                // $idTarification = 1;
-               
-                foreach ($obj as $key => $value) {
-                    $idBien = $key;
-                    $dateEntrer = empty($value->{'dateEntre'}) ? null : $value->{'dateEntre'};
-                    $dateSortie = empty($value->{'dateSortie'}) ? null : $value->{'dateSortie'};
-                    $idPension = $value->{'pension'} ?? 1;//rah khasha tkon int
-                    // $prix = $value->{'price'};
-                    // $numberPlace = $value->{'numberPlace'};
-                        $item = new Panier($codeReservation, $idBien, $dateEntrer, $dateSortie, $idPension);
-                        $panierModel->create($item);
-                        
-                        
-                           
-                }
-                echo json_encode([
-                    "status" => "success",
-                    "message" => "reservation success",
-                    "data"=> $obj
-                ]);
-            } catch (Exception $e) {
-                
-                //echo 'Caught exception: ',  $e->getMessage(), "\n";
-                echo json_encode($e->getMessage());
-                
+
+    if (isset($json) && !empty($json)) {
+        try {
+
+            foreach ($obj as $key => $value) {
+                $idBien = $key;
+                $dateEntrer = empty($value->{'dateEntre'}) ? null : $value->{'dateEntre'};
+                $dateSortie = empty($value->{'dateSortie'}) ? null : $value->{'dateSortie'};
+                $idPension = $value->{'pension'} ?? 1;
+                $item = new Panier($codeReservation, $idBien, $dateEntrer, $dateSortie, $idPension);
+                $panierModel->create($item);
             }
+            echo json_encode([
+                "status" => "success",
+                "message" => "reservation success",
+                "data" => $obj
+            ]);
+        } catch (Exception $e) {
+            echo json_encode($e->getMessage());
         }
-    } catch (Exception $e) {
-        echo json_encode($e->getMessage());
-        //echo 'Caught exception: ',  $e->getMessage(), "\n";
+    } else {
+        echo json_encode([
+            "status" => "fiald",
+            "message" => "error",
+            "data" => null
+        ]);
     }
 }

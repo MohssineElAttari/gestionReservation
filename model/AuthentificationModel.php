@@ -12,27 +12,30 @@ class Authentification extends DataBase
 
     public function inscription($obj)
     {
-        var_dump($obj);
-        echo $obj->getPrenom();
-        $query = "INSERT INTO utilisateur(id_role,nom,prenom,email,password) VALUES (:idRole,:Nom,:Prenom,:Email)";
+        // var_dump($obj);
+        // return;
+        // echo $obj->getPrenom();
+        // return $obj->getIdRole()."<br>".$obj->getPrenom()."<br>".$obj->getNom()."<br>".$obj->getEmail()."<br>".$obj->getPassword();
+        $query = "INSERT INTO utilisateur(id_role,nom,prenom,email,`password`) VALUES (:idRole,:Nom,:Prenom,:Email,:Password)";
 
         $req = $this->connexion->getConnexion()->prepare($query);
 
-        $req->execute([
-            'id_role' => $obj->getIdRole(),
-            'nom' => $obj->getgetPrenom(),
-            'prenom' => $obj->getNom(),
-            'email' => $obj->getEmail(),
-            'password' => $obj->getPassword(),
-        ]) or die('SQL');
-        header('Location: ../view/register.php');
+        return $req->execute([
+            'idRole' => $obj->getIdRole(),
+            'Nom' => $obj->getNom(),
+            'Prenom' => $obj->getPrenom(),
+            'Email' => $obj->getEmail(),
+            'Password' => md5($obj->getPassword()),
+        ]);
+        // echo "<script>alert('bien inscription')</script>";
+        // header('Location: ../view/register.php');
     }
 
     public function loginAuth($email, $password)
     {
         try {
-            // $pass = md5($password);
-            $query = "select * from utilisateur WHERE email =  '$email'  and password = '$password'";
+            $pass = md5($password);
+            $query = "select * from utilisateur WHERE email =  '$email'  and password = '$pass'";
             $req = $this->connexion->getConnexion()->prepare($query);
             $req->execute();
             return $req->fetch(PDO::FETCH_ASSOC);

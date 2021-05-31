@@ -1,6 +1,7 @@
 <?php
 
 include '../controller/AuthentificationController.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -19,13 +20,13 @@ include '../controller/AuthentificationController.php';
 
 <body>
     <div class="container">
-        <form action="#" method="POST" class="login-email">
+        <form action="" method="POST" class="login-email">
             <p class="login-text" style="font-size: 2rem; font-weight: 800;">Login</p>
             <div class="input-group">
-                <input type="email" placeholder="Email" name="email" value="" required>
+                <input type="email" placeholder="Email" name="email" value="<?php echo $email; ?>" required>
             </div>
             <div class="input-group">
-                <input type="password" placeholder="Password" name="password" value="" required>
+                <input type="password" placeholder="Password" name="password" value="<?php echo $_POST['password']; ?>" required>
             </div>
             <div class="input-group">
                 <button name="login" class="btn">Login</button>

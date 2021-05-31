@@ -12,7 +12,24 @@ let btnReservation = document.querySelector("#btn_reserver");
 let nombre;
 let menuHorizontal = document.querySelector(".menu-horizontal");
 btnReservation.addEventListener("click", function() {
-    sendData();
+    swal({
+            title: "Confirmation de réservation",
+            text: "Voulez-vous vraiment réserver !",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+        .then((willDelete) => {
+            if (willDelete) {
+                swal("Félicitations, vous avez été réservé ", {
+                    icon: "success",
+                });
+                sendData();
+            } else {
+                swal("Félicitations, votre réservation a réussi");
+            }
+        });
+
 })
 
 console.log(menuHorizontal);
@@ -167,8 +184,6 @@ function saveData(idBien) {
 
     console.log(data[idBien]);
     console.log(data);
-
-
 }
 
 function verefirer_check(e) {
@@ -285,22 +300,42 @@ function verefirerValidation() {
     // }
 }
 
+// function et the size of an object
+function siezData(data) {
+    Object.size = function(obj) {
+        var size = 0,
+            key;
+        for (key in obj) {
+            if (obj.hasOwnProperty(key)) size++;
+        }
+        return size;
+    };
+
+    // Get the size of an object
+    var size = Object.size(data);
+    return size;
+}
+
 function sendData() {
     console.log(data);
-    fetch('../controller/ReservationController.php?action=add', {
-            method: 'POST', // or 'PUT'
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data),
-        })
-        .then(response => response.text())
-        .then(data => {
-            console.log('Success:', data);
-        })
-        .catch((error) => {
-            console.error('Error:', error);
-        });
+
+    console.log(size);
+
+    // fetch('../controller/ReservationController.php?action=add', {
+    //         method: 'POST', // or 'PUT'
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //         },
+    //         body: JSON.stringify(data),
+    //     })
+    //     .then(response => response.text())
+    //     .then(data => {
+    //         console.log('Success:', data);
+    //     })
+    //     .catch((error) => {
+    //         console.error('Error:', error);
+    //     });
+    // return data;
 }
 
 

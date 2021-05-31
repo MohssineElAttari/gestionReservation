@@ -3,14 +3,6 @@
 session_start();
 error_reporting(0);
 
-
-if (isset($_POST['logout'])) {
-    session_destroy();
-    header("Location: ../view/login.php");
-} else if (isset($_SESSION['username'])) {
-    header("Location: ../view/reserver.php");
-}
-
 if (isset($_POST['login'])) {
     if (empty($_POST['email']) || empty($_POST['password'])) {
         $error = "Email or Password is invalid";
@@ -43,33 +35,36 @@ if (isset($_POST['login'])) {
     }
 } else if (isset($_POST['inscription'])) {
 
-    echo $_POST['nom'] . "<br>";
-    echo $_POST['prenom'] . "<br>";
-    echo $_POST['email'] . "<br>";
-    echo $_POST['password'] . "<br>";
-    echo $_POST['cpassword'] . "<br>";
-    
-    // if (empty($_POST['nom']) || empty($_POST['prenom']) || empty($_POST['email']) || empty($_POST['password'])) {
-    //     $error = "champ et vid";
-    //     echo "<script>alert($error)</script>";
-    // } else {
-    //     // Define $username and $password
-    //     $nom = $_POST['nom'];
-    //     $prenom = $_POST['prenom'];
-    //     $email = $_POST['email'];
-    //     $password = $_POST['password'];
+    // echo $_POST['nom'] . "<br>";
+    // echo $_POST['prenom'] . "<br>";
+    // echo $_POST['email'] . "<br>";
+    // echo $_POST['password'] . "<br>";
+    // echo $_POST['cpassword'] . "<br>";
 
-    //     require_once '../model/AuthentificationModel.php';
-    //     $authentification = new Authentification();
+    if (empty($_POST['prenom']) || empty($_POST['nom']) || empty($_POST['email']) || empty($_POST['password']) || empty($_POST['cpassword'])) {
+        $error = "champ et vid";
+        echo "<script>alert($error)</script>";
+    } else {
+        // Define $username and $password
+        $nom = $_POST['nom'];
+        $prenom = $_POST['prenom'];
+        $email = $_POST['email'];
+        $password = $_POST['password'];
 
-    //     $resultat = $authentification->inscription(new Utilisateur($prenom, $nom, $email, 2));
+        require_once '../model/AuthentificationModel.php';
+        $authentification = new Authentification();
 
-    //     if ($resultat != NULL) {
-    //         header("location:../view/login.php");
-    //     } else {
-    //         echo "<script>alert('erreur')</script>";
-    //     }
-    // }
+        $resultat = $authentification->inscription(new Utilisateur(2, $prenom, $nom, $email, $password));
+        // $authentification->inscription(new Utilisateur(2, $prenom, $nom, $email, $password));
+        // header("location:../view/login.php");
+
+        if ($resultat != NULL) {
+            echo "<script>alert('bien')</script>";
+            header("location:../view/login.php");
+        } else {
+            echo "<script>alert('erreur')</script>";
+        }
+    }
 }
 
 // ob_end_flush();

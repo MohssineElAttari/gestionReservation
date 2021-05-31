@@ -1,20 +1,20 @@
 <?php
 class Utilisateur
 {
+    private $idRole;
     private $idUtilisateur;
     private $prenom;
     private $nom;
     private $email;
     private $password;
-    private $idRole;
 
-    function __construct($prenom, $nom, $email, $password, $idRole)
+    function __construct($idRole, $prenom, $nom, $email, $password)
     {
+        $this->idRole = $idRole;
         $this->prenom = $prenom;
         $this->nom = $nom;
         $this->email = $email;
         $this->password = $password;
-        $this->idRole = $idRole;
     }
     public function getIdUtilisateur()
     {
