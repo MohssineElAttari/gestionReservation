@@ -24,3 +24,4 @@ Front-End: javascript, Bootstrap,SASS,CSS,HTML
 (Optionnel) une intrface admin pour gérer les tarifs
 
 (Optionnel) une classe tarification: qui regroupe l'ensemble des tarifs pour gérer aussi haute/basse saison.
+<img src="src/images/home.png">
