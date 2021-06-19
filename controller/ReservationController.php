@@ -42,23 +42,18 @@ function getIdReservation()
 }
 function addReservation()
 {
-
-
-
     global $reservationModel;
     global $panierModel;
     $json = file_get_contents('php://input');
 
     // Use json_decode() function to decode a string
     $obj = json_decode($json);
-    $idUtilisateur = 1;
+    $idUtilisateur = $_SESSION['id'];
     // var_dump($obj) ;
     $reservationModel->create(new Reservation($idUtilisateur));
     $codeReservation = getIdReservation();
 
-
     //echo $obj ;
-
     if (isset($json) && !empty($json)) {
         try {
 
@@ -67,6 +62,7 @@ function addReservation()
                 $dateEntrer = empty($value->{'dateEntre'}) ? null : $value->{'dateEntre'};
                 $dateSortie = empty($value->{'dateSortie'}) ? null : $value->{'dateSortie'};
                 $idPension = $value->{'pension'} ?? 1;
+                $age = $value->{'age'} ;
                 $item = new Panier($codeReservation, $idBien, $dateEntrer, $dateSortie, $idPension);
                 $panierModel->create($item);
             }

@@ -30,7 +30,7 @@ if (isset($_POST['login'])) {
                 header("location:../view/reserver.php");
             }
         } else {
-            echo "<script>alert('Email or Password is invalid')</script>";
+            echo '<script>swal("Good job!", "You clicked the button!", "success");</script>';
         }
     }
 } else if (isset($_POST['inscription'])) {

@@ -221,8 +221,6 @@ function verefirer_check(e) {
 
     console.log(currentTab);
 
-
-
     if (element.checked) {
         image_child.style.filter = "none";
         saveData(idBien);
@@ -334,7 +332,7 @@ function verefirerValidation() {
 function sendData() {
     console.log(data);
 
-    console.log(size);
+    // console.log(size);
     fetch('../controller/ReservationController.php?action=add', {
             method: 'POST', // or 'PUT'
             headers: {
@@ -342,7 +340,7 @@ function sendData() {
             },
             body: JSON.stringify(data),
         })
-        .then(response => response.text())
+        .then(response => response.json())
         .then(data => {
             console.log('Success:', data);
         })
@@ -424,10 +422,6 @@ function switch_age(age) {
     return message;
 }
 
-
-
-
-
 //swiper
 // Display the current tab
 
@@ -469,6 +463,7 @@ function nextPrev(action, n, idBien) {
     if (action == "submit") {
         closeBtn.style.display = "none";
         saveData(idBien);
+        swal("effectué avec succès !", "La réservation a été enregistrée !", "success");
         return;
     }
 
