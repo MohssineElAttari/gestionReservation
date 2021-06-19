@@ -25,3 +25,7 @@ Front-End: javascript, Bootstrap,SASS,CSS,HTML
 
 (Optionnel) une classe tarification: qui regroupe l'ensemble des tarifs pour gérer aussi haute/basse saison.
 <img src="src/images/home.png">
+<img src="src/images/login.png">
+<img src="src/images/reserver-home.png">
+<img src="src/images/reserver-multi.png">pension
+<img src="src/images/pension.png">
